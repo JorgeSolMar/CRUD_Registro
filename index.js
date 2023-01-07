@@ -19,6 +19,7 @@ return item;
 
 let GuardarDB = () => {
     localStorage.setItem('suscriptores', JSON.stringify(arrayRegistros));
+    MostrarDB();
 }
 
 let MostrarDB = () => {
@@ -27,8 +28,21 @@ let MostrarDB = () => {
     console.log(arrayRegistros);
 
     arrayRegistros.forEach(element => {
-        console.log(element);
+    
+    listaRegistrosUI.innerHTML += `<tr>
+    <th scope="row">${element.nomyap}</th>
+    <td>${element.correo}</td>
+    <td>${element.telefono}</td>
+    <td>
+        <button type="button" class="btn btn-success">Editar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+    </td>
+  </tr>`
+
+
     });
+
+    
 
 }
 
