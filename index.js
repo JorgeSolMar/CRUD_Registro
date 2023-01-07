@@ -25,25 +25,26 @@ let GuardarDB = () => {
 let MostrarDB = () => {
     listaRegistrosUI.innerHTML = '';
     arrayRegistros = JSON.parse(localStorage.getItem('suscriptores')) ? JSON.parse(localStorage.getItem('suscriptores')) : [];
-    console.log(arrayRegistros);
-
-    arrayRegistros.forEach(element => {
     
+
+    arrayRegistros.forEach((element, index) => {
+    console.log(index)
     listaRegistrosUI.innerHTML += `<tr>
     <th scope="row">${element.nomyap}</th>
     <td>${element.correo}</td>
     <td>${element.telefono}</td>
     <td>
         <button type="button" class="btn btn-success">Editar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button onclick='eliminarDB(${index})' type="button" class="btn btn-danger">Eliminar</button>
     </td>
   </tr>`
-
-
     });
+}
 
+let eliminarDB = (position) => {
+    arrayRegistros.splice(position,1);
     
-
+    GuardarDB();
 }
 
 
