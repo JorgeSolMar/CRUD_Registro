@@ -2,6 +2,7 @@
 let formularioUI = document.getElementById('formulario');
 let listaRegistrosUI = document.getElementById('listaRegistros');
 let arrayRegistros = [];
+let newdata = document.getElementById('newdata');
 
 
 
@@ -63,22 +64,42 @@ let editarDB = (position) => {
             document.getElementById('correo').value = textocorreo;
             document.getElementById('telefono').value = textotelefono;
 
-        }    
-    
-    
-    
-    MostrarDB();
-});
+        }
 
+    });
 }
 
+function actualizarDB (position) {
+    arrayRegistros = JSON.parse(localStorage.getItem('suscriptores'))
+    
+    let indexArray;
+
+    arrayRegistros.forEach((element, index) => {
+        indexArray = index;
+        console.log(index);
+
+    })
+    
+         
+
+        
+            let textonombre = document.getElementById('nomyap').value;
+            let textocorreo = document.getElementById('correo').value;
+            let textotelefono = document.getElementById('telefono').value;
+
+            let newitem = [{
+                nomyap: textonombre,
+                correo: textocorreo,
+                telefono: textotelefono
+            }];
+
+    arrayRegistros.splice(indexArray,1,newitem);
 
 
 
-// map((elemento, position) =>{
-//     return elemento + 1;
-//     });
+    GuardarDB();
 
+}
 
 
 //Eventos
